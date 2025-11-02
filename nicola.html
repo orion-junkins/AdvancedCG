@@ -19,7 +19,7 @@ The environment maps are parameterized by a 2D HDRI, which is then wrapped aroun
 The other advantage of using environment maps is that if you have reflecting materials in the scene, it adds quite a few details and makes everything look super realistic, as you will see in the validation scene.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/final/final_envmap.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/final/final_envmap.jpg" alt="" class="img-responsive">
 </div>
 <center>Our Interpretation of Starry Night, implemented using our Environment Map</center>
 
@@ -59,8 +59,8 @@ Because we have to normalize the PDF distributions, other values next to the sun
 Hence it pushed me to write floating point stable code as good as possible.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/envmap/nori_materials_diff.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/envmap/mitsuba_materials_diff.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/envmap/nori_materials_diff.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/envmap/mitsuba_materials_diff.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Environment Map Emitter comparison for path MIS with 64 SPP</center>
 
@@ -69,7 +69,7 @@ Because of the high values inside the sun, you can see a really cool gradient on
 
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/envmap/wraptest_sampling.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/envmap/wraptest_sampling.jpg" alt="" class="img-responsive">
 </div>
 <center>Warptest Integration for Environment Map Important Sampling</center>
 
@@ -78,7 +78,7 @@ If we would render it with the sun, there would just be one red spot in the corn
 Therefore I've clamped the HDRI a bit to have a more accurate representation of the HDRI in the point cloud on top of the sphere.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/envmap/warptest_integration.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/envmap/warptest_integration.jpg" alt="" class="img-responsive">
 </div>
 <center>Warptest Sampling vs Integration Comparison</center>
 
@@ -104,7 +104,7 @@ By interpolating the UV-coordinates on each intersection with the mesh around it
 This formulation also goes really well with how BSDFs are defined in Nori - as all the image texture does is affecting the albedo. Thus we can have nice metals or microfacet materials with colored details.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/final/final_textures.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/final/final_textures.jpg" alt="" class="img-responsive">
 </div>
 <center>Mickey Mouse form Steamboat Willie textured using our Image Texture</center>
 
@@ -131,26 +131,26 @@ One small addition is that `stb_image` reads in the image from top-left to botto
 The validation is done by putting test-texture images on top of spheres and arbitrary meshes to see that it works for arbitrary shapes.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/textures/nori_sphere_textured_1.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/textures/nori_sphere_textured_2.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/textures/mitsuba_sphere_textured_1.png" alt="Mitsuba" class="img-responsive">
-  <img src="./assets/nicola/textures/mitsuba_sphere_textured_2.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/textures/nori_sphere_textured_1.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/textures/nori_sphere_textured_2.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/textures/mitsuba_sphere_textured_1.jpg" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/textures/mitsuba_sphere_textured_2.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Textures Comparison for Spheres</center>
 
 The textures used for the sphere validation are taken from [polycount](https://polycount.com/discussion/186513/free-checker-pattern-texture) and from [Maxon](https://help.maxon.net/r3d/maya/en-us/Content/html/UV+Projection.html).
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/textures/nori_mine_diamonds_textured.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/textures/mitsuba_mine_diamonds_textured.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/textures/nori_mine_diamonds_textured.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/textures/mitsuba_mine_diamonds_textured.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Textures Comparison for a Simple Mesh</center>
 
 The `obj` is just a simple cube with a Minecraft texture put on top, which was taken from [sketchfab](https://sketchfab.com/3d-models/minecraft-cube-690644b638ce46b2b713ed2236e0a9e1).
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/textures/nori_mickey_mouse_textured.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/textures/mitsuba_mickey_mouse_textured.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/textures/nori_mickey_mouse_textured.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/textures/mitsuba_mickey_mouse_textured.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Textures Comparison for a Complex Mesh</center>
 
@@ -172,7 +172,7 @@ Using normals maps together with image textures is a nice way to perturb the mes
 We've opted to implement normal mapping instead of bump mapping, to be able to precisely affect in which direction normals should point to. Also, there are lots of really good looking normal maps, which can be used for our final scene.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/final/final_normals.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/final/final_normals.jpg" alt="" class="img-responsive">
 </div>
 <center>Completely flat floor details added with our Normal Texture</center>
 
@@ -206,16 +206,16 @@ The last thing is to perturb the intersection normal by accessing the normal tex
 The normal map validation follows a similar approach as the textures.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/normals/nori_normal_maps.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/normals/mitsuba_normal_maps.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/normals/nori_normal_maps.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/normals/mitsuba_normal_maps.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Normal Map Comparison with Normals facing the `z`-Direction and Area Light</center>
 
-The first validation scene should work, even if there is no continuous tangent-space. The texture is taken from [Wikipedia](https://en.wikipedia.org/wiki/Normal_mapping#/media/File:Normal_map_example_with_scene_and_result.png).
+The first validation scene should work, even if there is no continuous tangent-space. The texture is taken from [Wikipedia](https://en.wikipedia.org/wiki/Normal_mapping#/media/File:Normal_map_example_with_scene_and_result.jpg).
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/normals/nori_normal_maps_rotated.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/normals/mitsuba_normal_maps_rotated.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/normals/nori_normal_maps_rotated.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/normals/mitsuba_normal_maps_rotated.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Normal Map Comparison with Normals facing an arbitrary Direction and Point Light</center>
 
@@ -225,8 +225,8 @@ Furthermore I've wanted to test whether it works with point-lights at the same t
 Though it should still be sufficient to show that the normal shading is correct.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/normals/nori_mine_diamonds_normals.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/normals/mitsuba_mine_diamonds_normal.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/normals/nori_mine_diamonds_normals.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/normals/mitsuba_mine_diamonds_normal.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Normal Map Comparison for Different oriented Faces</center>
 
@@ -290,26 +290,26 @@ Homogeneous media has been implemented in two variants, first with sigle scatter
 ## Validation
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/homogeneous/nori_basic_scene.png" alt="Empty" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/nori_empty_volume.png" alt="Invisible Volume" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_basic_scene.jpg" alt="Empty" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_empty_volume.jpg" alt="Invisible Volume" class="img-responsive">
 </div>
 <center>Comparison of an empty cbox vs a cbox with an invisible volume</center>
 
 To test whether my code runs OK, I've implemented an empty, invisible volume in `empty_volume.cpp`. This volume does not change the throughput or the radiance, but only the intersection point and the ray.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a0_e2.png" alt="Nori (Multiple Scatter)" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/nori_homogeneous_ss_a0_e2.png" alt="Nori (Single Scatter)" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a0_e2.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a0_e2.jpg" alt="Nori (Multiple Scatter)" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_homogeneous_ss_a0_e2.jpg" alt="Nori (Single Scatter)" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a0_e2.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Comparison of homogeneous volumes with $\alpha = 0$ and $\sigma_t = 2$</center>
 
 The first validation scene, checks whether the implementation of absorptive volumes with $\alpha = \frac{\sigma_s}{\sigma_t} = \frac{\sigma_s}{\sigma_s + \sigma_t} = 0$ (thus $\sigma_s = 0$) is correct, by validating against Mitsuba V3. Here we can see that single scattering is actually a very nice approximation for these kind of volumes.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a1_e2.png" alt="Nori (Multiple Scatter)" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/nori_homogeneous_ss_a1_e2.png" alt="Nori (Single Scatter)" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a1_e2.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a1_e2.jpg" alt="Nori (Multiple Scatter)" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_homogeneous_ss_a1_e2.jpg" alt="Nori (Single Scatter)" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a1_e2.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Comparison of homogeneous volumes with $\alpha = 1$ and $\sigma_t = 2$</center>
 
@@ -318,10 +318,10 @@ It is quite astonishing how much the single scattering volume diverges from the 
 This clearly shows that single scattering is not sufficient to model more complex volumes like clouds.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a05_e2.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a05_e2.png" alt="Mitsuba" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a05_e1.png" alt="Nori (Lower Extinction)" class="img-responsive">
-  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a05_e1.png" alt="Mitsuba (Lower Extinction)" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a05_e2.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a05_e2.jpg" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/nori_homogeneous_ms_a05_e1.jpg" alt="Nori (Lower Extinction)" class="img-responsive">
+  <img src="./assets/nicola/homogeneous/mitsuba_homogeneous_a05_e1.jpg" alt="Mitsuba (Lower Extinction)" class="img-responsive">
 </div>
 <center>Comparison of homogeneous volumes with $\alpha=0.5$ for $\sigma_t \in \{1, 2\}$</center>
 
@@ -342,7 +342,7 @@ To have more control on the light distribution in the media, we've implemented t
 This enables us to define whether the volumes should be forward scattering like clouds or backwards scattering like dusty smoke.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/final/final_phase.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/final/final_phase.jpg" alt="" class="img-responsive">
 </div>
 <center>Backward facing Dirty Plume and Dust, and forward facing Background Cloud, using Henyey-Greenstein</center>
 
@@ -356,10 +356,10 @@ As our implementation uses phase functions just like BSDF, the only thing to do 
 ## Validation
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/phase/nori_homogeneous_ms_a1_e2_hg_backward.png" alt="Nori (Backward)" class="img-responsive">
-  <img src="./assets/nicola/phase/nori_homogeneous_ms_a1_e2_hg_forward.png" alt="Nori (Forward)" class="img-responsive">
-  <img src="./assets/nicola/phase/mitsuba_homogeneous_a1_e2_hg_backward.png" alt="Mitsuba (Backward)" class="img-responsive">
-  <img src="./assets/nicola/phase/mitsuba_homogeneous_a1_e2_hg_forward.png" alt="Mitsuba (Forward)" class="img-responsive">
+  <img src="./assets/nicola/phase/nori_homogeneous_ms_a1_e2_hg_backward.jpg" alt="Nori (Backward)" class="img-responsive">
+  <img src="./assets/nicola/phase/nori_homogeneous_ms_a1_e2_hg_forward.jpg" alt="Nori (Forward)" class="img-responsive">
+  <img src="./assets/nicola/phase/mitsuba_homogeneous_a1_e2_hg_backward.jpg" alt="Mitsuba (Backward)" class="img-responsive">
+  <img src="./assets/nicola/phase/mitsuba_homogeneous_a1_e2_hg_forward.jpg" alt="Mitsuba (Forward)" class="img-responsive">
 </div>
 <center>Homogeneous Volumes using the Henyey-Greenstein phase function with $g \in \{0.7, -0.7\}$</center>
 
@@ -380,7 +380,7 @@ The difference between the already discussed homogeneous media and the heterogen
 This makes it possible to define an arbitrary shaped volumes which adds lots of details to the final render.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/final/final_hetero.png" alt="" class="img-responsive">
+  <img src="./assets/nicola/final/final_hetero.jpg" alt="" class="img-responsive">
 </div>
 <center>Dirty Steam Smoke coming out of the Chimney using our Heterogeneous Media</center>
 
@@ -410,8 +410,8 @@ We've implemented Delta-Tracking to calculate the scattering points inside the v
 ## Validation
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/heterogeneous/nori_bunny_heterogeneous.png" alt="Nori" class="img-responsive">
-  <img src="./assets/nicola/heterogeneous/mitsuba_bunny_heterogeneous.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/nicola/heterogeneous/nori_bunny_heterogeneous.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/nicola/heterogeneous/mitsuba_bunny_heterogeneous.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>Heterogeneous Media Comparison with the [Standford Bunny](https://www.openvdb.org/download/)</center>
 
@@ -420,9 +420,9 @@ The first validation scene was done with an albedo $\alpha = 1 \implies \sigma_a
 Also Mitsuba needs another bounding shape for each heterogeneous volume for which I've used a cube. Even after some time, I was not able to exactly position the cube on top of the bunny, hence why it's ears are cut off. It should still show validation, that the integration of the volume itself is implemented correctly.
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/heterogeneous/ipic_render_isotropic.png" alt="Isotropic" class="img-responsive">
-  <img src="./assets/nicola/heterogeneous/ipic_render_forward.png" alt="Forward HG" class="img-responsive">
-  <img src="./assets/nicola/heterogeneous/ipic_render_backward.png" alt="Backward HG" class="img-responsive">
+  <img src="./assets/nicola/heterogeneous/ipic_render_isotropic.jpg" alt="Isotropic" class="img-responsive">
+  <img src="./assets/nicola/heterogeneous/ipic_render_forward.jpg" alt="Forward HG" class="img-responsive">
+  <img src="./assets/nicola/heterogeneous/ipic_render_backward.jpg" alt="Backward HG" class="img-responsive">
 </div>
 <center>Effects of Henyey-Greenstein phase function on a plume, simulated for the almighty [IPIC Paper](https://studios.disneyresearch.com/2024/04/25/the-impulse-particle-in-cell-method/) written by the prodigy Sergio Sancho et. al. which resolution is only $256 \times 512 \times 256$ but completely crushes industry standard APIC renders by conserving the kinematic energy way better using impulse gauge variables and using auxiliary particles to approximate the deformation gradient in a flexible and stable maner.</center>
 
@@ -450,7 +450,7 @@ In the end we got a nice looking space hangar, which was done by me with awesome
 </div>
 
 <div class="twentytwenty-container">
-  <img src="./assets/nicola/blender/blender_hat.png" alt="Unused Easter Egg Hat" class="img-responsive">
+  <img src="./assets/nicola/blender/blender_hat.jpg" alt="Unused Easter Egg Hat" class="img-responsive">
 </div>
 
 <link href="./resources/offcanvas.css" rel="stylesheet">

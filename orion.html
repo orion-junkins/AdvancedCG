@@ -16,7 +16,7 @@ RIS & ReSTIR
 Resampled importance sampling and ReSTIR are powerful techniques for reducing render time by squeezing more quality out of each sample per pixel. I implemented RIS (Talbot 2005) and the spatial re-use pass of ReSTIR DI (Bitterli 2017).
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/denoised_restir.png" alt="8 SPP" class="img-responsive">
+  <img src="assets/orion/restir/denoised_restir.jpg" alt="8 SPP" class="img-responsive">
 </div>
 <center>8 SPP render created using RIS and two passes of spatial ReSTIR</center>
 
@@ -69,17 +69,17 @@ For validation, I explore RIS, ReSTIR and a Monte Carlo baseline across a variet
 The primary objective of these techniques is to squeeze as much quality as possible out of a single SPP. Lets start with a monte carlo baseline and see what one SPP gives us.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/bl_1_1_1_0_0_0.png" alt="1 SPP BL" class="img-responsive">
+  <img src="assets/orion/restir/bl_1_1_1_0_0_0.jpg" alt="1 SPP BL" class="img-responsive">
 </div>
 <center>1 SPP render with a MIS direct illumination integrator</center>
 
 As expected, 1 SPP does not give much. Now, lets introduce RIS. RIS gives two parameters to tune: $M_{area}$ and $M_{brdf}$ denoting the number of candidates evaluated using emitter and brdf sampling respectively. The figure below shows the results of a variety of combinations of these values alongside the same baseline image as above.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/bl_1_1_1_0_0_0.png" alt="1 SPP BL" class="img-responsive">
-  <img src="assets/orion/restir/ris_1_4_4_0_0_0.png" alt="1 SPP RIS M_area=4, M_brdf=4" class="img-responsive">
-  <img src="assets/orion/restir/ris_1_256_32_0_0_0.png" alt="1 SPP RIS M_area=256, M_brdf=32" class="img-responsive">
-  <img src="assets/orion/restir/ris_1_32_8_0_0_0.png" alt="1 SPP RIS M_area=32, M_brdf=8" class="img-responsive">
+  <img src="assets/orion/restir/bl_1_1_1_0_0_0.jpg" alt="1 SPP BL" class="img-responsive">
+  <img src="assets/orion/restir/ris_1_4_4_0_0_0.jpg" alt="1 SPP RIS M_area=4, M_brdf=4" class="img-responsive">
+  <img src="assets/orion/restir/ris_1_256_32_0_0_0.jpg" alt="1 SPP RIS M_area=256, M_brdf=32" class="img-responsive">
+  <img src="assets/orion/restir/ris_1_32_8_0_0_0.jpg" alt="1 SPP RIS M_area=32, M_brdf=8" class="img-responsive">
 </div>
 <center>1 SPP renders with a monte carlo baseline and various RIS parameter combinations</center>
 
@@ -88,13 +88,13 @@ RIS is able to get far more out of a single sample. But, there is still a large 
 ReSTIR adds three new parameters to tune. Number of neighbors N, neighborhood radius R, and number of spatial passes P. Optimizing these parameters is a challenging problem in its own right that depends on scene, constraints and goals. Note that my experiments generally use higher neighbor counts and smaller radii than other ReSTIR implementations. By not having a temporal pass, this becomes both possible and necessary. Possible, because I mostly (assuming P small) avoid samples cycling back and forth leading to correlation artifacts (a common issue for ReSTIR). Necessary, because my reservoirs are missing the "seed" of a good sample normally provided by the previous frame.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/ris_1_256_32_0_0_0.png" alt="RIS" 
+  <img src="assets/orion/restir/ris_1_256_32_0_0_0.jpg" alt="RIS" 
   class="img-responsive">
-  <img src="assets/orion/restir/restir_1_256_32_9_3_1.png" alt="ReSTIR N=4 R=2" 
+  <img src="assets/orion/restir/restir_1_256_32_9_3_1.jpg" alt="ReSTIR N=4 R=2" 
   class="img-responsive">
-  <img src="assets/orion/restir/restir_1_256_32_4_2_1.png" alt="ReSTIR N=9 R=3" 
+  <img src="assets/orion/restir/restir_1_256_32_4_2_1.jpg" alt="ReSTIR N=9 R=3" 
   class="img-responsive">
-  <img src="assets/orion/restir/restir_1_256_32_16_5_1.png" alt="ReSTIR N=16 R=5" 
+  <img src="assets/orion/restir/restir_1_256_32_16_5_1.jpg" alt="ReSTIR N=16 R=5" 
   class="img-responsive">
 </div>
 <center>RIS versus various ReSTIR parameters for $M_{area}=256$ and $M_{brdf}=32$. All 1 SPP. All ReSTIR use $P=1$ </center>
@@ -102,13 +102,13 @@ ReSTIR adds three new parameters to tune. Number of neighbors N, neighborhood ra
 Note that bright samples seem to "spread" filling in dark patches in between them. As the radius and number of neighbors grows this becomes more pronounced. Rather than increasing the radii, a similar effect can be achieved by introducing more spatial passes. Lets zoom in on the $N = 16, R=5$ case and explore the effect of introducing more spatial passes.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/restir_1_256_32_16_5_1.png" alt="P=1" 
+  <img src="assets/orion/restir/restir_1_256_32_16_5_1.jpg" alt="P=1" 
   class="img-responsive">
-  <img src="assets/orion/restir/restir_1_256_32_16_5_2.png" alt="P=2" 
+  <img src="assets/orion/restir/restir_1_256_32_16_5_2.jpg" alt="P=2" 
   class="img-responsive">
-  <img src="assets/orion/restir/restir_1_256_32_16_5_3.png" alt="P=3" 
+  <img src="assets/orion/restir/restir_1_256_32_16_5_3.jpg" alt="P=3" 
   class="img-responsive">
-  <img src="assets/orion/restir/restir_1_256_32_16_5_4.png" alt="P=4" 
+  <img src="assets/orion/restir/restir_1_256_32_16_5_4.jpg" alt="P=4" 
   class="img-responsive">
 </div>
 <center>Effect of multiple ReSTIR passes for $M_{area}=256$, $M_{brdf}=32$, $N=16$ and $R=4$. All are 1 SPP</center>
@@ -116,7 +116,7 @@ Note that bright samples seem to "spread" filling in dark patches in between the
 Note that, as with increasing the neighbor count and radius, introducing more passes generally has a smoothing effect, spreading out bright samples. There are still isolated pixels which failed to find a good light sample, but running a very small number of SPP to average these out yields nice results.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/restir_4_256_32_16_5_2.png" alt="4 SPP" 
+  <img src="assets/orion/restir/restir_4_256_32_16_5_2.jpg" alt="4 SPP" 
   class="img-responsive">
 </div>
 <center>ReSTIR with $M_{area}=256$, $M_{brdf}=32$, $N=16$, $R=4$ and $P=2$.  </center>
@@ -131,11 +131,11 @@ Now, lets focus on rendering time. Consider the three renders below.
 - Monte Carlo baseline at 1024 SPP with a render time of 43.7 seconds.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/restir/restir_32_32_8_8_3_2_t22_4s.png" alt="ReSTIR 32 SPP 22.4s" 
+  <img src="assets/orion/restir/restir_32_32_8_8_3_2_t22_4s.jpg" alt="ReSTIR 32 SPP 22.4s" 
   class="img-responsive">
-  <img src="assets/orion/restir/ris_128_32_8_0_0_0_t37_5s.png" alt="RIS 128 SPP 37.5s" 
+  <img src="assets/orion/restir/ris_128_32_8_0_0_0_t37_5s.jpg" alt="RIS 128 SPP 37.5s" 
   class="img-responsive">
-  <img src="assets/orion/restir/bl_1024_1_1_0_0_0_t43_7s.png" alt="BL 1024 SPP 43.7s" 
+  <img src="assets/orion/restir/bl_1024_1_1_0_0_0_t43_7s.jpg" alt="BL 1024 SPP 43.7s" 
   class="img-responsive">
 </div>
 <center>RIS and ReSTIR compared to a Monte Carlo Baseline.  </center>
@@ -171,7 +171,7 @@ Realistic Camera Model
 By default, Nori uses a perspective pinhole camera. While simple to implement, this model is unrealistic; images have an artificial aesthetic and are lacking several features of "real" captured images such as lens distortion, depth of field, and vignetting. To improve the visual quality of our renders, and enable these features, I implemented a realistic camera model based on the PBRT V3 implementation.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/camera/cover_shot.png" alt="Cover Shot" class="img-responsive">
+  <img src="assets/orion/camera/cover_shot.jpg" alt="Cover Shot" class="img-responsive">
 </div>
 <center>512 SPP rendering using the 50mm D-Gauss Lens</center>
 
@@ -216,10 +216,10 @@ This system naturally yields several realistic camera effects. Depth of field oc
 These effects not only occur, but are also highly controllable. By using different lens definition files, modifying the files themselves, or modifying various hyper parameters (e.g. field of view, focus distance, focal length, etc), very different visual effects can be obtained. The figure below demonstrates the same scene rendered using four different camera models.
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/camera/perspective.png" alt="Perspective" class="img-responsive">
-  <img src="./assets/orion/camera/wide.png" alt="Wide 22mm" class="img-responsive">
-  <img src="./assets/orion/camera/fisheye.png" alt="Fisheye 10mm" class="img-responsive">
-  <img src="./assets/orion/camera/dgauss.png" alt="D-Gauss 50mm" class="img-responsive">
+  <img src="./assets/orion/camera/perspective.jpg" alt="Perspective" class="img-responsive">
+  <img src="./assets/orion/camera/wide.jpg" alt="Wide 22mm" class="img-responsive">
+  <img src="./assets/orion/camera/fisheye.jpg" alt="Fisheye 10mm" class="img-responsive">
+  <img src="./assets/orion/camera/dgauss.jpg" alt="D-Gauss 50mm" class="img-responsive">
 </div>
 <center>The CGL Triangle scene rendered with four different lens definitions provided by PBRT</center>
 
@@ -236,10 +236,10 @@ I validate my implementation against PBRT V3.
 Below shows four images of the same scene rendered with the Nori perspective camera (upper left), the Nori realistic camera using the D-Gauss 50mm lens (lower left), the PBRT v3 perspective camera (upper right) and the PBRT realistic camera using the D-Gauss 50mm lens (lower right).
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/camera/teatime_perspective.png" alt="Nori Perspective" class="img-responsive">
-  <img src="./assets/orion/camera/teatime.png" alt="Nori D-Gauss 50mm" class="img-responsive">
-  <img src="./assets/orion/camera/pbrt_perspective.png" alt="PBRT Perspective" class="img-responsive">
-  <img src="./assets/orion/camera/pbrt_realistic.png" alt="PBRT D-Gauss 50mm" class="img-responsive">
+  <img src="./assets/orion/camera/teatime_perspective.jpg" alt="Nori Perspective" class="img-responsive">
+  <img src="./assets/orion/camera/teatime.jpg" alt="Nori D-Gauss 50mm" class="img-responsive">
+  <img src="./assets/orion/camera/pbrt_perspective.jpg" alt="PBRT Perspective" class="img-responsive">
+  <img src="./assets/orion/camera/pbrt_realistic.jpg" alt="PBRT D-Gauss 50mm" class="img-responsive">
 </div>
 <center>PBRT's and Nori's perspective and realistic camera comparison</center>
 
@@ -263,8 +263,8 @@ Intel Open Image Denoise Integration
 To further reduce rendering time, we integrated with the Intel Open Image Denoiser. This toolkit takes a noisy rendering output and intelligently removes high frequency noise. 
 
 <div class="twentytwenty-container">
-    <img src="./assets/orion/oidn/denoise_demo_pixels_16.png" alt="16 SPP raw" class="img-responsive">
-    <img src="./assets/orion/oidn/denoise_demo_pixels_16_denoised_nori.png" alt="16 SPP denoised" class="img-responsive">
+    <img src="./assets/orion/oidn/denoise_demo_pixels_16.jpg" alt="16 SPP raw" class="img-responsive">
+    <img src="./assets/orion/oidn/denoise_demo_pixels_16_denoised_nori.jpg" alt="16 SPP denoised" class="img-responsive">
 </div>
 <center>16 SPP MIS path tracing rendering before and after applying denoising with IOID</center>
 
@@ -286,28 +286,28 @@ Validation can be done visually.
 This figure shows an example output from our normal and albedo integrators.
 
 <div class="twentytwenty-container">
-  <img src="assets/orion/oidn/denoise_demo_albedo.png" alt="Albedo Integrator" class="img-responsive">
-  <img src="assets/orion/oidn/denoise_demo_normals.png" alt="Normals Integrator" class="img-responsive">
-  <img src="assets/orion/oidn/denoise_baseline.png" alt="1024 SPP Baseline" class="img-responsive">
+  <img src="assets/orion/oidn/denoise_demo_albedo.jpg" alt="Albedo Integrator" class="img-responsive">
+  <img src="assets/orion/oidn/denoise_demo_normals.jpg" alt="Normals Integrator" class="img-responsive">
+  <img src="assets/orion/oidn/denoise_baseline.jpg" alt="1024 SPP Baseline" class="img-responsive">
 </div>
 <center>8 SPP render created using RIS and two passes of spatial ReSTIR</center>
 
 
 The figure below shows the denoising results for 16 and 64 SPP renders.
 <div class="twentytwenty-container">
-    <img src="./assets/orion/oidn/denoise_demo_pixels_16.png" alt="16 SPP raw" class="img-responsive">
-    <img src="./assets/orion/oidn/denoise_demo_pixels_16_denoised_nori.png" alt="16 SPP denoised" class="img-responsive">
-    <img src="./assets/orion/oidn/denoise_demo_pixels_64.png" alt="64 SPP raw" class="img-responsive">
-    <img src="./assets/orion/oidn/denoise_demo_pixels_64_denoised.png" alt="64 SPP denoised" class="img-responsive">
+    <img src="./assets/orion/oidn/denoise_demo_pixels_16.jpg" alt="16 SPP raw" class="img-responsive">
+    <img src="./assets/orion/oidn/denoise_demo_pixels_16_denoised_nori.jpg" alt="16 SPP denoised" class="img-responsive">
+    <img src="./assets/orion/oidn/denoise_demo_pixels_64.jpg" alt="64 SPP raw" class="img-responsive">
+    <img src="./assets/orion/oidn/denoise_demo_pixels_64_denoised.jpg" alt="64 SPP denoised" class="img-responsive">
 </div>
 <center>Denoising for 16 and 64 SPP renders </center>
 
 The figure below compares the same two denoised results to a 1024 SPP Monte Carlo baseline.
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/oidn/denoise_demo_pixels_16_denoised_nori.png" alt="16 SPP denoised" class="img-responsive">
-  <img src="./assets/orion/oidn/denoise_demo_pixels_64_denoised.png" alt="64 SPP denoised raw baseline" class="img-responsive">
-  <img src="./assets/orion/oidn/denoise_baseline.png" alt="1024 SPP raw baseline" class="img-responsive">
+  <img src="./assets/orion/oidn/denoise_demo_pixels_16_denoised_nori.jpg" alt="16 SPP denoised" class="img-responsive">
+  <img src="./assets/orion/oidn/denoise_demo_pixels_64_denoised.jpg" alt="64 SPP denoised raw baseline" class="img-responsive">
+  <img src="./assets/orion/oidn/denoise_baseline.jpg" alt="1024 SPP raw baseline" class="img-responsive">
 </div>
 <center>Denoised images compared to a Monte Carlo baseline</center>
 
@@ -316,8 +316,8 @@ Discussion
 Overall, this package provided a powerful way to get visually good results without waiting on very high SPP times. However, for our final render, this feature was not the most useful for two reasons. First, given the HPC integration, we were able to run very high SPP renders, so little to no denoising of the final product was necessary. Second, we did not modify our albedo and normal map integrators to properly handle volumes. So, we only denoise with a pixel level pass, excluding the albedo and normal maps. The figure below shoes the final rendering before and after applying this pixel level denoising.
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/oidn/final_noisy.png" alt="4096 SPP raw" class="img-responsive">
-  <img src="./assets/orion/oidn/final_denoised.png" alt="4096 SPP denoised" class="img-responsive">
+  <img src="./assets/orion/oidn/final_noisy.jpg" alt="4096 SPP raw" class="img-responsive">
+  <img src="./assets/orion/oidn/final_denoised.jpg" alt="4096 SPP denoised" class="img-responsive">
 </div>
 <center>Our final render before and after denoising</center>
 
@@ -331,7 +331,7 @@ Euler HPC Integration
 ==============================================================
 Integrating with the ETH Euler Cluster enabled substantial speedups in rendering time.
 
-<img src="./assets/orion/hpc/veach_mis_EULER.png" alt="Example Euler Render" class="img-responsive">
+<img src="./assets/orion/hpc/veach_mis_EULER.jpg" alt="Example Euler Render" class="img-responsive">
 <center>An example rendering from the Euler cluster produced at 128 SPP in 3.03s using 24 cores using the MIS renderer implemented in Project 3 </center>
 
 Implementation Details
@@ -345,7 +345,7 @@ Validation
 --------------------------------------------------------------
 For validation, I include a screenshot of two running jobs with their `squeue` status and log files.
 
-<img src="./assets/orion/hpc/output.png" alt="" class="img-responsive">
+<img src="./assets/orion/hpc/output.jpg" alt="" class="img-responsive">
 <center>Two simultaneous jobs running on Euler through the VS Code SSH interface</center>
 
 I also time a variety of core counts to identify the optimal choice. For each core count, the rendering of the image above was timed 10 separate times. The table and figure below show the results.
@@ -363,7 +363,7 @@ Cores          |Mean Time      |Std Dev        |Median Time    |IQ Range       |
 48             |1.881          |0.521          |2.023          |0.002          |
 <center>Timing statistics for various core counts across 10 trials</center>
 
-<img src="./assets/orion/hpc/execution_time_plot.png" alt="Example Euler Render" class="img-responsive">
+<img src="./assets/orion/hpc/execution_time_plot.jpg" alt="Example Euler Render" class="img-responsive">
 <center>The median and IQ ranges from the table plotted visually</center>
 
 
@@ -386,7 +386,7 @@ Rough and Smooth Conductors
 In order to model metallic surfaces, I implemented smooth and rough conductors. I chose to use a Disney BRDF inspired approach to this implementation, implementing the roughness, subsurface and metallic parameters. While slightly less realistic for some materials, this approach gives the benefit of intuitive artistic control and close alignment with the "principled" BRDF in both Blender and Mitsuba. 
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/disney/cbox_star_wars.png" alt="" class="img-responsive">
+  <img src="./assets/orion/disney/cbox_star_wars.jpg" alt="" class="img-responsive">
 </div>
 <center>Example scene using my BSDFs for metallic materials (plus one dielectric for fun)</center>
 
@@ -413,8 +413,8 @@ To validate, I compare my implementation to Mitsuba. To verify correctness, I fi
 First I compare my implementation to the Mitsuba principled BRDF, focusing on the roughness and metallic terms. 
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/disney/rough_metal_nori.png" alt="Nori" class="img-responsive">
-  <img src="./assets/orion/disney/rough_metal_mitsuba.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/orion/disney/rough_metal_nori.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/orion/disney/rough_metal_mitsuba.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>My Disney BSDF compared to the Mitsuba Principled BSDF. Rows vary the roughness parameter with values of 0.9, 0.5, 0.1 for top, middle and bottom respectively. Columns vary the metallic parameter from 0.0 to 1.0 in 0.25 increments.</center>
 
@@ -423,8 +423,8 @@ Very slight differences do appear at grazing angles (visible on upper edge of th
 Next, I compare the "Ag" material in their smooth conductor BSDF to an approximated version of the same metal from my BSDF.
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/disney/shiny_metal_mitsuba_Ag.png" alt="Nori" class="img-responsive">
-  <img src="./assets/orion/disney/shiny_metal_nori.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/orion/disney/shiny_metal_mitsuba_Ag.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/orion/disney/shiny_metal_nori.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>My Disney BSDF compared to the Mitsuba smooth conductor BSDF</center>
 
@@ -433,8 +433,8 @@ For perfectly shiny metals, my implementation yields similar results to the Mits
 Similarly, we can look at the same material with their rough conductor BSDF.
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/disney/rough_metal_nori_0_7.png" alt="Nori" class="img-responsive">
-  <img src="./assets/orion/disney/rough_metal_mitsuba_0_5_ag.png" alt="Mitsuba" class="img-responsive">
+  <img src="./assets/orion/disney/rough_metal_nori_0_7.jpg" alt="Nori" class="img-responsive">
+  <img src="./assets/orion/disney/rough_metal_mitsuba_0_5_ag.jpg" alt="Mitsuba" class="img-responsive">
 </div>
 <center>My Disney BSDF compared to the Mitsuba rough conductor BSDF</center>
 
@@ -443,10 +443,10 @@ Again, similar results can be achieved, but the appearance is clearly different.
 As a final comparison, I validate that my diffuse term functions the same as Mitsuba. Below, I compare my implementation and Mitsuba for purely diffuse BRDFs for both the standard + retro reflection diffuse term and the fake subsurface reflection term separately.
 
 <div class="twentytwenty-container">
-  <img src="./assets/orion/disney/diffuse.png" alt="Nori Standard + Retro" class="img-responsive">
-  <img src="./assets/orion/disney/diffuse_mitsuba.png" alt="Mitsuba Standard + Retro" class="img-responsive">
-  <img src="./assets/orion/disney/diffuse_ss.png" alt="Nori SS" class="img-responsive">
-  <img src="./assets/orion/disney/diffuse_ss_mitsuba.png" alt="Mitsuba SS" class="img-responsive">
+  <img src="./assets/orion/disney/diffuse.jpg" alt="Nori Standard + Retro" class="img-responsive">
+  <img src="./assets/orion/disney/diffuse_mitsuba.jpg" alt="Mitsuba Standard + Retro" class="img-responsive">
+  <img src="./assets/orion/disney/diffuse_ss.jpg" alt="Nori SS" class="img-responsive">
+  <img src="./assets/orion/disney/diffuse_ss_mitsuba.jpg" alt="Mitsuba SS" class="img-responsive">
 </div>
 <center>Comparing diffuse renders between my Disney BSDF and the Mitsuba Principled BSDF</center>
 
